@@ -22,3 +22,4 @@ gem 'pry-rails'
 gem 'binding_of_caller'
 gem 'better_errors', group: :development
 gem 'pikaday-gem', '~> 1.2.0'
+gem "geocoder"

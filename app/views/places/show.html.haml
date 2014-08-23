@@ -17,6 +17,8 @@
       %p=link_to 'Edit review', edit_place_review_path(place, review)
 -if place.user != current_user and current_user.reviews.find_by_place_id(place.id) == nil
   = render 'reviews/form'
+%p= place.city
+%p= place.street
 
 
 = link_to 'Back to places', places_path

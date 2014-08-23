@@ -38,8 +38,13 @@ ActiveRecord::Schema.define(version: 20140823144359) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "street"
+    t.string   "city"
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
+  add_index "places", ["latitude", "longitude"], name: "index_places_on_latitude_and_longitude", using: :btree
   add_index "places", ["user_id"], name: "index_places_on_user_id", using: :btree
 
   create_table "reviews", force: true do |t|
