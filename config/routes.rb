@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'home#index'
   # root to: "users#new"
-  Add Index and show views for bookings
+  # Add Index and show views for bookings
   devise_for :users
 
   resources :home, only: :index
