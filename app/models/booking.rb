@@ -5,6 +5,5 @@ class Booking < ActiveRecord::Base
   validates_datetime :date_to, :after => :date_from
   validates_date :date_from, :after => lambda { Date.current }
   validates_numericality_of :place_id, :user_id
-
-
+  
 end
