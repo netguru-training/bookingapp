@@ -10,7 +10,7 @@
     = render 'layouts/navbar'
 
     .container
-      %p#error= flash[:error]
-      %p.notice= notice
-      %p.notice= alert 
+      %p.bg-danger= flash[:error]
+      %p.bg-success= notice
+      %p.bg-warning= alert 
       = yield
