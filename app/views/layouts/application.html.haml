@@ -10,4 +10,7 @@
     = render 'layouts/navbar'
 
     .container
+      %p#error= flash[:error]
+      %p.notice= notice
+      %p.notice= alert 
       = yield
