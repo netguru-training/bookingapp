@@ -1,13 +1,10 @@
 class BookingsController < ApplicationController
   before_action :check_ownership , only: [:new, :edit, :create, :destroy]
-  expose (:bookings)
-  expose (:booking)
 
-  expose_decorated(:bookings, attributes: :bookings_params)
-  expose_decorated(:booking, attributes: :booking_params)
+  expose(:bookings, attributes: :bookings_params)
+  expose(:booking, attributes: :booking_params)
 
-  def index
-  end
+  def index; end
 
   def show
   end
@@ -41,7 +38,7 @@ class BookingsController < ApplicationController
     else
       message = "Something went wrong"
     end
-    redirect_to bookings_path, flash: message
+      redirect_to bookings_path, flash: message
   end
 
   private
