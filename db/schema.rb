@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140823085857) do
+ActiveRecord::Schema.define(version: 20140823132200) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,9 @@ ActiveRecord::Schema.define(version: 20140823085857) do
     t.boolean  "confirmation", default: false
   end
 
+  add_index "bookings", ["place_id"], name: "index_bookings_on_place_id", using: :btree
+  add_index "bookings", ["user_id"], name: "index_bookings_on_user_id", using: :btree
+
   create_table "places", force: true do |t|
     t.integer  "user_id"
     t.string   "name"
@@ -35,6 +38,8 @@ ActiveRecord::Schema.define(version: 20140823085857) do
     t.datetime "updated_at"
   end
 
+  add_index "places", ["user_id"], name: "index_places_on_user_id", using: :btree
+
   create_table "reviews", force: true do |t|
     t.text     "content"
     t.integer  "rating"
@@ -43,6 +48,9 @@ ActiveRecord::Schema.define(version: 20140823085857) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "reviews", ["place_id"], name: "index_reviews_on_place_id", using: :btree
+  add_index "reviews", ["user_id"], name: "index_reviews_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",               default: "", null: false
