@@ -28,4 +28,6 @@
                     Booking confirmed
 
               %p.list-group-item-text
+                = 'from ' + booking.date_from.strftime('%m/%d/%Y') + ' to ' +  booking.date_to.strftime('%m/%d/%Y')
+              %p.list-group-item-text
                 = booking.place.description

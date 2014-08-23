@@ -14,10 +14,20 @@
           %span.label.label-warning Most recent
         .list-group
           - places.most_recent.each do |place|
-            = render 'place_display', place: place
+            = link_to place, class: 'list-group-item' do
+              %h4.list-group-item-heading
+                = place.name
+                .small.pull-right
+                  = "Added #{time_ago_in_words(place.created_at)} ago "
+              %p.list-group-item-text
+                = place.description
       .col-sm-6
         %h3.text-center
           %span.label.label-warning The hottest
         .list-group
           - places.most_booked.each do |place|
-            = render 'place_display', place: place
+            = link_to place, class: 'list-group-item' do
+              %h4.list-group-item-heading
+                = place.name
+              %p.list-group-item-text
+                = "#{place.bookings.count} already made a reservation"
