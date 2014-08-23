@@ -13,7 +13,7 @@ gem 'spring',        group: :development
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
 gem 'devise'
-gem 'simple_form'
+gem 'simple_form', branch: 'bootstrap-3'
 gem 'haml-rails'
 gem 'decent_exposure'
 gem 'decent_decoration'
