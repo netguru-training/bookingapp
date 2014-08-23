@@ -1,4 +1,6 @@
 class ReviewsController < ApplicationController
+  expose(:review, attributes: :review_params)
+  expose(:places)
 
   def index
   end

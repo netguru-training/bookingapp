@@ -9,7 +9,7 @@ class PlacesController < ApplicationController
     return if place.user == current_user
     redirect_to root_path, :flash => { :error => "You're not the owner of that place" }
   end
-  
+
   def new
   end
 
@@ -43,7 +43,7 @@ class PlacesController < ApplicationController
   private
     
   def place_params
-    params.require(:places).permit(:price, :name, :description)
+    params.require(:place).permit(:price, :name, :description)
   end
 
 end
