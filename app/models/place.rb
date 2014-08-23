@@ -5,7 +5,7 @@ class Place < ActiveRecord::Base
 
   validates :price, :name, :description, :user_id, presence: true
   validates :name, uniqueness: true
-  
+
   def average_rating
     Review.where(place_id: id).average(:rating)
   end
@@ -19,6 +19,6 @@ class Place < ActiveRecord::Base
   end
 
   def self.most_booked
-    Place.all.sort_by{ |place| place.bookings_count }.first(5).reverse
+    Place.all.sort_by{ |place| place.bookings_count }.reverse.first(5)
   end
 end
