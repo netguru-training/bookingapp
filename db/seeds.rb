@@ -22,8 +22,10 @@ end
                user_id: User.order("RANDOM()").first.id)
 end
 
-15.times do |n|
-  User.order("RANDOM()").first.bookings.create(place_id: Place.order("RANDOM()").first.id,
-                                               date_from: Time.now + rand(15).days,
-                                               date_to: Time.now + rand(15).days + 15.days)
+150.times do |n|
+  random_date = Time.now + rand(15).days
+  User.first.bookings.create!(place_id: Place.offset(rand(10)).first.id,
+                              date_from: random_date,
+                              date_to: random_date + 15.days,
+                              confirmation: false)
 end

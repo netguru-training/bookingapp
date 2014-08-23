@@ -1,7 +1,7 @@
 class Place < ActiveRecord::Base
   belongs_to :user
   has_many :reviews
-  has_many :bookings
+  has_many :bookings, counter_cache: true
 
   validates :price, :name, :description, :user_id, presence: true
   validates :name, uniqueness: true
@@ -19,6 +19,6 @@ class Place < ActiveRecord::Base
   end
 
   def self.most_booked
-    Place.all.sort_by{ |place| place.bookings_count }.first(5)
+    Place.all.sort_by{ |place| place.bookings_count }.first(5).reverse
   end
 end
