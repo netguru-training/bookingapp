@@ -10,7 +10,7 @@ class Booking < ActiveRecord::Base
   def date_overlap
     User.find(user_id).bookings.each do |booking|
       if (booking.date_from..booking.date_to).overlaps?(date_from..date_to)
-        errors.add(:base, "you already made a booking on that date")
+        errors.add(:base, 'You already made a booking on that date')
       end
     end
   end

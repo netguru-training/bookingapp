@@ -23,23 +23,13 @@ class BookingsController < ApplicationController
   end
 
   def accept
-    if booking.accept!
-      message = "Booking accepted"
-    else
-      message = "Something bad happend"
-    end
+    message = booking.accept! ? 'Booking accepted' : 'Something bad happened'
     redirect_to bookings_path, flash: message
   end
 
-  end
-
   def decline
-    if booking.decline!
-      message = "Booking rejected"
-    else
-      message = "Something went wrong"
-    end
-      redirect_to bookings_path, flash: message
+    message = booking.decline! ? 'Booking rejected' : 'Something bad happened'
+    redirect_to bookings_path, flash: message
   end
 
   private
@@ -49,6 +39,6 @@ class BookingsController < ApplicationController
   end
 
   def check_ownership
-    redirect_to root, flash:"You can't book your own place" if current_user.is_owner?(booking)
+    redirect_to root, flash: "You can't book your own place" if current_user.is_owner?(booking)
   end
 end
