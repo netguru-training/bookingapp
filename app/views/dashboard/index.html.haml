@@ -5,6 +5,7 @@
         %h2.text-center
           %span.label.label-default
             Your places
+        %hr
         .list-group
           - places.each do |place|
             = link_to place, class: 'list-group-item' do
@@ -16,10 +17,11 @@
         %h2.text-center
           %span.label.label-info
             Places you rented
+        %hr
         .list-group
-          - places.each do |place|
-            = link_to place, class: 'list-group-item' do
+          - bookings.each do |booking|
+            = link_to booking.place, class: 'list-group-item' do
               %h4.list-group-item-heading
-                = place.name
+                = booking.place.name
               %p.list-group-item-text
-                = place.description
+                = booking.place.description

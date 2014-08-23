@@ -8,6 +8,7 @@ class Place < ActiveRecord::Base
   validates :name, uniqueness: true
 
   scope :most_recent, -> { order("created_at DESC").limit(5) }
+  scope :for_user, -> (id) { where(user_id: id) }
 
   attr_accessor :bookings_count
 

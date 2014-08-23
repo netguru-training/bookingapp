@@ -1,0 +1,7 @@
+= link_to place, class: 'list-group-item' do
+  %h4.list-group-item-heading
+    = place.name
+    .small.pull-right
+      = "Added #{time_ago_in_words(place.created_at)} ago "
+  %p.list-group-item-text
+    = place.description
