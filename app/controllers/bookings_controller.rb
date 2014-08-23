@@ -1,10 +1,11 @@
 class BookingsController < ApplicationController
-  before_action :check_ownership , only: [:new, :edit, :create, :destroy]
+  before_action :check_ownership, only: [:new, :edit, :create, :destroy]
 
   expose(:bookings, attributes: :bookings_params)
   expose(:booking, attributes: :booking_params)
 
-  def index; end
+  def index
+  end
 
   def show
   end
