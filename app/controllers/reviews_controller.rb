@@ -1,7 +1,8 @@
 class ReviewsController < ApplicationController
+  before_action :authenticate_user!
   expose(:review, attributes: :review_params)
   expose(:place) { Place.find(params[:place_id]) }
-  before_action :authenticate_user!  
+  
 
   def show
   end
@@ -18,7 +19,7 @@ class ReviewsController < ApplicationController
     if review.save
       redirect_to root_path, notice: 'Review created.'
     else
-      render action: 'new'
+      render :new
     end
   end
 
@@ -26,7 +27,7 @@ class ReviewsController < ApplicationController
     if review.save
       redirect_to root_path, notice: 'Review updated.'
     else
-      render action: 'new'
+      render :new
     end
   end
 

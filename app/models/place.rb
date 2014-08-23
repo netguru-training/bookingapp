@@ -4,6 +4,7 @@ class Place < ActiveRecord::Base
   has_many :bookings, counter_cache: true
 
   validates :price, :name, :description, :user_id, presence: true
+  validates_format_of :price, :with => /\A^\d+\.?\d{0,2}\z/
   validates :name, uniqueness: true
 
   scope :most_recent, -> { order("created_at DESC").limit(5) }

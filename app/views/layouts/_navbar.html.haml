@@ -13,7 +13,7 @@
           = f.input :query, label: false, input_html: { class: 'input form-control' }, placeholder: 'Search', wrapper_html: { class: 'form-group' }
           = f.submit 'Search', class: 'btn btn-default'
       %ul.nav.navbar-nav
-        %li{:class => [params[:controller], params[:action]] == ["places", 'index'] ? "active" : ""}
+        %li{class: [params[:controller], params[:action]] == ['places', 'index'] ? 'active' : ''}
           =link_to 'Places', places_path
 
        
