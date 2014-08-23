@@ -23,5 +23,9 @@
             = link_to booking.place, class: 'list-group-item' do
               %h4.list-group-item-heading
                 = booking.place.name
+                - if booking.confirmed?
+                  %span.label.label-success
+                    Booking confirmed
+
               %p.list-group-item-text
                 = booking.place.description

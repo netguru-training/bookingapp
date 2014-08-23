@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140823132200) do
+ActiveRecord::Schema.define(version: 20140823141730) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20140823132200) do
     t.datetime "date_to"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "confirmation", default: false
+    t.boolean  "confirmed",  default: false
   end
 
   add_index "bookings", ["place_id"], name: "index_bookings_on_place_id", using: :btree

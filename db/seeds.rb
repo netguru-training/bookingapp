@@ -27,5 +27,5 @@ end
   User.first.bookings.create!(place_id: Place.offset(rand(10)).first.id,
                               date_from: random_date,
                               date_to: random_date + 15.days,
-                              confirmation: false)
+                              confirmed: false)
 end
