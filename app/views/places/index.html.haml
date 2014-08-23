@@ -15,6 +15,6 @@
       %td= truncate place.description, length: 15
       %td= place.price
       %td= link_to 'Show', place_path(place)
-      %td= link_to 'Edit', edit_place_path(place)
-      %td= link_to 'Destroy', place, method: :delete, data: { confirm: 'Are you sure?' }
-
+      - if place.owned_by?(current_user)
+        %td= link_to 'Edit', edit_place_path(place)
+        %td= link_to 'Destroy', place, method: :delete, data: { confirm: 'Are you sure?' }

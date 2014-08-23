@@ -10,6 +10,10 @@ class Place < ActiveRecord::Base
 
   attr_accessor :bookings_count
 
+  def owned_by?(owner)
+    user == owner
+  end
+
   def average_rating
     Review.where(place_id: id).average(:rating)
   end
