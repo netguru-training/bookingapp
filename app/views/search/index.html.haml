@@ -1,5 +1,17 @@
--@places.each do |place|
-  =place.name
-  =place.description
-  =place.user.email
 
+%table.table.table-striped
+  %tr
+    %th Name
+    %th Description
+    %th Price
+    %th
+    %th
+    %th
+  -@places.each do |place|
+    %tr 
+      %td= place.name
+      %td= place.description
+      %td= place.price
+      %td= link_to 'Show', place_path(place)
+      %td= link_to 'Edit', edit_place_path(place)
+      %td= link_to 'Destroy', place, method: :delete, data: { confirm: 'Are you sure?' }
