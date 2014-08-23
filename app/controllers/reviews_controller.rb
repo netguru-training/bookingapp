@@ -26,8 +26,9 @@ class ReviewsController < ApplicationController
 
   def update
     if review.save
-      redirect_to places_path, notice: 'Review updated.'
+      redirect_to place_path(place), notice: 'Review updated.'
     else
+      flash[:alert] = review.errors[:base].first 
       render :new, alert: 'Review wasnt updated.'
     end
   end

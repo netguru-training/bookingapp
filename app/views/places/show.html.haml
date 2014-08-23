@@ -3,7 +3,9 @@
 
 %p= place.description
 %p= place.price
-%p= place.average_rating
+%p
+  Average rating:
+  = place.average_rating
 - place.reviews.each do |review|
   .well
     %b=review.content
@@ -11,8 +13,11 @@
     %p 
       Rating:
       =review.rating
+    -if review.user == current_user
+      %p=link_to 'Edit review', edit_place_review_path(place, review)
+-if place.user != current_user and current_user.reviews.find_by_place_id(place.id) == nil
+  = render 'reviews/form'
 
-= render 'reviews/form'
 
 = link_to 'Back to places', places_path
 - if place.owned_by?(current_user)

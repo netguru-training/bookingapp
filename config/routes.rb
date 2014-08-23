@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :dashboard, only: :index
 
   resources :places do
-    resource :reviews
+    resources :reviews
   end
   root 'home#index'
 
