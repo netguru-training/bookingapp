@@ -1,15 +1,21 @@
 class PlacesController < ApplicationController
   before_action :authenticate_user!
-  
+  # before_action :check_if_user_is_author, :only => [:edit, :update]
+  expose(:place, attributes: :place_params)
+  expose(:places)
+
+
   def new
-    @place = Place.new
   end
 
   def show
   end
 
+  def index
+  end
+
   def create
-    self.place = Place.new(place_params)
+    place.user = current_user
 
     if place.save
       redirect_to places_path
@@ -22,11 +28,17 @@ class PlacesController < ApplicationController
   end
 
   def update
+    if place.save
+      redirect_to places_path
+    else
+      render action: 'new'
+    end
   end
 
   private
-    def place_params
-      params.require(:places).permit(:price, :name, :description, :user_id)
-    end
+    
+  def place_params
+    params.require(:places).permit(:price, :name, :description)
+  end
 
 end
