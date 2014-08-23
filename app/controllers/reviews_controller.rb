@@ -17,9 +17,10 @@ class ReviewsController < ApplicationController
     review.user = current_user
     review.place = place
     if review.save
-      redirect_to places_path, notice: 'Review created.'
-    else
-      redirect_to places_path
+      redirect_to place_path(place), notice: 'Review created.'
+    else      
+      flash[:alert] = review.errors[:base].first 
+      redirect_to place_path(place)
     end
   end
 

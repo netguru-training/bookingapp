@@ -20,3 +20,4 @@ gem 'decent_decoration'
 gem 'validates_timeliness', '~> 3.0'
 gem 'pry-rails'
 gem 'binding_of_caller'
+gem 'better_errors', group: :development
