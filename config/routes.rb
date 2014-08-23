@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  root 'home#index'
+  # root to: "users#new"
+  Add Index and show views for bookings
   devise_for :users
 
   resources :home, only: :index
@@ -7,13 +10,13 @@ Rails.application.routes.draw do
   resources :places do
     resources :reviews
   end
-  root 'home#index'
+
 
   resources :search
   resources :bookings do
     member do
-      get 'accept'
-      get 'decline'
+      post :accept
+      post :decline
     end
   end
 end

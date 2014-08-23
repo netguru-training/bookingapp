@@ -1,8 +1,10 @@
 class BookingsController < ApplicationController
   before_action :check_ownership, only: [:new, :edit, :create, :destroy]
 
-  expose(:bookings, attributes: :bookings_params)
+  expose(:bookings)
   expose(:booking, attributes: :booking_params)
+  expose(:places)
+  expose(:place)
 
   def index
   end
@@ -23,19 +25,21 @@ class BookingsController < ApplicationController
   end
 
   def accept
+    self.booking = Booking.find(params[:id])
     message = booking.accept! ? 'Booking accepted' : 'Something bad happened'
-    redirect_to bookings_path, flash: message
+    redirect_to bookings_path, notice: message
   end
 
   def decline
+    self.booking = Booking.find(params[:id])
     message = booking.decline! ? 'Booking rejected' : 'Something bad happened'
-    redirect_to bookings_path, flash: message
+    redirect_to bookings_path, notice: message
   end
 
   private
 
-  def bookings_params
-    params.require(:bookings).permit(:date_from, :date_to, :place_id)
+  def booking_params
+    params.require(:booking).permit(:date_from, :date_to, :place_id)
   end
 
   def check_ownership

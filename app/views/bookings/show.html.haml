@@ -1,0 +1,29 @@
+%h2
+  %b= booking.place.name
+
+%p= booking.place.description
+%p
+  Price:
+  = booking.place.price
+%p
+  User:
+  = booking.user.email
+%p
+  Booked:
+  = time_ago_in_words(booking.created_at)
+  ago.
+
+%p
+  Dates:
+  = booking.date_from
+  = booking.date_to
+  = booking_period
+%p
+  Total price:
+  = booking.place.price*booking_period.to_i
+
+= link_to 'Back to bookings', bookings_path
+
+= button_to 'Accept', accept_booking_path(booking)
+
+= button_to 'Reject', decline_booking_path(booking)
