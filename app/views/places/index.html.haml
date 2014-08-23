@@ -1,0 +1,19 @@
+%h2 Places
+%h3
+  = link_to '+ add place', new_place_path
+%table.table.table-striped
+  %tr
+    %th Name
+    %th Description
+    %th Price
+    %th
+    %th
+    %th
+  - places.each do |place|
+    %tr 
+      %td= place.name
+      %td= place.description
+      %td= place.price
+      %td= link_to 'Show', place_path(place)
+      %td= link_to 'Edit', edit_place_path(place)
+      %td= link_to 'Destroy', place_path(place), method: :delete, data: { confirm: 'Are you sure?' }
