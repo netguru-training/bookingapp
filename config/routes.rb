@@ -5,8 +5,12 @@ Rails.application.routes.draw do
 
 
   resources :home, only: :index
-  resources :places
+  resources :places do
+    resource :reviews
+  end
   root 'home#index'
+
+
 
   resources :bookings do  
     member do
