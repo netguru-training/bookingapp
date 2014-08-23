@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   root 'home#index'
 
 
-
+  resources :search
   resources :bookings do  
     member do
       get 'accept'
