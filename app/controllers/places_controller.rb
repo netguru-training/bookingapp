@@ -2,6 +2,7 @@ class PlacesController < ApplicationController
   before_action :check_if_user_is_author, :only => [:edit, :update]
   expose(:place, attributes: :place_params)
   expose(:places)
+  expose(:review) { Review.new }
 
 
   def check_if_user_is_author

@@ -17,7 +17,7 @@ class ReviewsController < ApplicationController
     review.user = current_user
     review.place = place
     if review.save
-      redirect_to root_path, notice: 'Review created.'
+      redirect_to places_path, notice: 'Review created.'
     else
       render :new
     end
@@ -25,7 +25,7 @@ class ReviewsController < ApplicationController
 
   def update
     if review.save
-      redirect_to root_path, notice: 'Review updated.'
+      redirect_to places_path, notice: 'Review updated.'
     else
       render :new
     end
