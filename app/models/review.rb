@@ -5,7 +5,7 @@ class Review < ActiveRecord::Base
   validates_uniqueness_of :place_id, scope: :user_id
   validates :place_id, :user_id, numericality: { only_integer: true }
   validate :review_author_is_not_place_author
-  validates :rating, numericality: { less_than: 6, greater_than_or_equal_to: 0 }
+  validates :rating, numericality: { less_than: 6, greater_than: 0 }
 
   def review_author_is_not_place_author
     if Place.find(place_id).user_id == user_id

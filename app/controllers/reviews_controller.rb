@@ -19,7 +19,7 @@ class ReviewsController < ApplicationController
     if review.save
       redirect_to places_path, notice: 'Review created.'
     else
-      render :new
+      redirect_to places_path
     end
   end
 
@@ -27,7 +27,7 @@ class ReviewsController < ApplicationController
     if review.save
       redirect_to places_path, notice: 'Review updated.'
     else
-      render :new
+      render :new, alert: 'Review wasnt updated.'
     end
   end
 
