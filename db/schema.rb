@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140823141730) do
+ActiveRecord::Schema.define(version: 20140823144359) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,8 @@ ActiveRecord::Schema.define(version: 20140823141730) do
     t.boolean  "confirmed",  default: false
   end
 
+  add_index "bookings", ["confirmed"], name: "index_bookings_on_confirmed", using: :btree
+  add_index "bookings", ["place_id", "confirmed"], name: "index_bookings_on_place_id_and_confirmed", using: :btree
   add_index "bookings", ["place_id"], name: "index_bookings_on_place_id", using: :btree
   add_index "bookings", ["user_id"], name: "index_bookings_on_user_id", using: :btree
 

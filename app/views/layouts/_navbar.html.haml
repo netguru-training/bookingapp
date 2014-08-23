@@ -16,8 +16,10 @@
         %li{class: [params[:controller], params[:action]] == ['places', 'index'] ? 'active' : ''}
           =link_to 'Places', places_path
 
-       
       %ul.nav.navbar-nav.navbar-right
+        - if @notifications
+          %li
+            = link_to 'You have pending notifications!', dashboard_index_path
         - if user_signed_in?
           %li
             = link_to current_user.email, dashboard_index_path

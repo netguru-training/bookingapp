@@ -1,11 +1,20 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!, except: [:index]
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
+  expose(:notifications) { check_for_new_rent_offers }
+
   protect_from_forgery with: :exception
 
   decent_configuration do
     strategy DecentExposure::StrongParametersStrategy
+  end
+
+  protected
+
+  def check_for_new_rent_offers
+    @notifications ||= begin
+      ids = Place.for_user(current_user.id).pluck(:id)
+      Booking.where(confirmed: false, place_id: ids)
+    end
   end
 
 end
