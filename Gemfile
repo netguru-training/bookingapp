@@ -14,3 +14,4 @@ gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
 gem 'devise'
 gem 'simple_form'
+gem "haml-rails"
