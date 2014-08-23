@@ -32,6 +32,11 @@ class PlacesController < ApplicationController
   def edit
   end
 
+  def destroy
+    place.destroy
+    redirect_to places_url, notice: 'Product was successfully destroyed.'
+  end
+
   def update
     if place.save
       redirect_to places_path

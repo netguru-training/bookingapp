@@ -4,7 +4,8 @@ class Place < ActiveRecord::Base
   has_many :bookings
 
   validates :price, :name, :description, :user_id, presence: true
-
+  validates :name, uniqueness: true
+  
   def average_rating
     Review.where(place_id: id).average(:rating)
   end
