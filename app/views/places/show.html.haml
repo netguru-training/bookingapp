@@ -1,6 +1,9 @@
 %h2
-  %b
-    = place.name
+  %b= place.name
 
 %p= place.description
 %p= place.price
+
+= link_to 'Back to places', places_path
+|
+= link_to 'Show', edit_place_path(place)
