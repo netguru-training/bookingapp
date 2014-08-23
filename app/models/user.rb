@@ -9,6 +9,6 @@ class User < ActiveRecord::Base
   has_many :reviews
 
   def is_owner?(booking)
-    booking.user ==self
+    booking.user == self
   end
 end
