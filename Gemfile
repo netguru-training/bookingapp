@@ -34,3 +34,4 @@ group :development, :test do
 end
 
 gem 'travis'
+gem 'select2-rails', '3.5.9.1'

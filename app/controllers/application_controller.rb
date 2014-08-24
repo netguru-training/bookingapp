@@ -1,4 +1,9 @@
 class ApplicationController < ActionController::Base
+  
+  expose(:places_to_search) { Place.all.pluck(:name)}
+
+
+
   before_action :authenticate_user!, except: [:index, :facebook]
   expose(:notifications) { check_for_new_rent_offers }
 

@@ -8,10 +8,14 @@
         %span.icon-bar
       = link_to 'BookingApp', root_url, class: 'navbar-brand active'
     #bs-example-navbar-collapse-1.collapse.navbar-collapse
-      = simple_form_for :query, url: search_index_path, method: :get do |f|
+      /    
+      = simple_form_for :query, url: search_index_path, method: :get, wrapper: :default do |f|
         .navbar-form.navbar-left
-          = f.input :query, label: false, input_html: { class: 'input form-control' }, placeholder: 'Search', wrapper_html: { class: 'form-group' }
-          = f.submit 'Search', class: 'btn btn-default'
+
+          / = f.input :query, label: false, input_html: { class: 'input form-control' }, placeholder: 'Search', wrapper_html: { class: 'form-group' } 
+          = f.input :query, collection: places_to_search, input_html: { class: 'autocompleter hideit' }, label: false
+
+
       %ul.nav.navbar-nav
         %li{class: [params[:controller], params[:action]] == ['places', 'index'] ? 'active' : ''}
           =link_to 'Places', places_path

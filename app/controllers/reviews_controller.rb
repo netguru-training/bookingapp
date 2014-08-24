@@ -7,7 +7,8 @@ class ReviewsController < ApplicationController
   def show
   end
 
-  def new 
+  def new
+    @places = Place.all 
   end
 
   def edit

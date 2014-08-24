@@ -1,7 +1,11 @@
 /*
+ *= require select2
  *= require_tree .
  *= require_self
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "pikaday";
+.autocompleter {
+	width: 150px;	
+}
