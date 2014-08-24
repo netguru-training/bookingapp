@@ -17,7 +17,7 @@ class Place < ActiveRecord::Base
 
   def full_street_address
     [street, city].join ','
-  end 
+  end
 
   def owned_by?(owner)
     user == owner

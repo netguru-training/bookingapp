@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   has_many :places
   has_many :reviews
 
-  def is_owner?(booking)
+  def is_booking_owner?(booking)
     booking.user == self
   end
 

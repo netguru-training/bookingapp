@@ -3,8 +3,6 @@ class BookingsController < ApplicationController
 
   expose(:bookings)
   expose(:booking, attributes: :booking_params)
-  expose(:places)
-  expose(:place)
 
   def index
   end
@@ -20,7 +18,8 @@ class BookingsController < ApplicationController
 
   def create
     booking.user = current_user
-    if current_user.is_owner?(booking)
+    #if current_user.is_booking_owner?(booking)
+    if booking.place.owned_by?(current_user)
       redirect_to root_path, flash: {error: "You can't book your own place"}
     elsif booking.save
       current_user.bookings << booking
@@ -52,6 +51,6 @@ class BookingsController < ApplicationController
   end
 
   def check_ownership
-    redirect_to root_path, flash: {error: "You can't book your own place"} if current_user.is_owner?(booking)
+    redirect_to root_path, flash: {error: "You can't book your own place2"} if current_user.is_booking_owner?(booking)
   end
 end
