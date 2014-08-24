@@ -25,13 +25,4 @@ RSpec.describe Place, type: :model do
       expect(place.full_street_address).to eq 'Lipowa,Białystok'
     end
   end
-
-  describe '.bookings_count' do
-    place = Place.new
-    before {place.bookings += [Booking.new, Booking.new] }
-
-    it 'calculates amount of bookings' do  
-      expect(place.bookings_count).to eq 2
-    end
-  end
 end
