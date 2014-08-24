@@ -26,16 +26,10 @@ $("document").ready ->
     field: $("#booking_date_to")[0],
     minDate: days)
   $(".autocompleter").select2({
-	  loadMorePadding: 90,
-	  minimumInputLength: 1,
-	  maximumSelectionSize: 2,
-
+    loadMorePadding: 90,
+    minimumInputLength: 1,
+    maximumSelectionSize: 2,
   })  
   $(".autocompleter").on "change", (e) ->
-
-  	$(".query").submit()
-
-
+    $(".query").submit()
   return
-
-

@@ -8,7 +8,7 @@ class ReviewsController < ApplicationController
   end
 
   def new
-    @places = Place.all 
+    @places = Place.all
   end
 
   def edit
