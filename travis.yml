@@ -1,3 +1,0 @@
-deploy:
-  provider: heroku
-  api_key: ENV["heroku_token"]
