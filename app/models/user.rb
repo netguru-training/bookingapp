@@ -20,7 +20,6 @@ class User < ActiveRecord::Base
       user.password = Devise.friendly_token[0,20]
       user.password_confirmation = user.password
       user.email = auth.info.email
-      binding.pry
       user.save
     end
   end
