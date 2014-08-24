@@ -23,3 +23,6 @@ config/database.yml
 logfile
 
 local.local.*
+
+# Ignore application configuration
+/config/application.yml

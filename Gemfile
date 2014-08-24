@@ -26,3 +26,4 @@ gem 'geocoder'
 gem 'omniauth-facebook'
 gem 'rollbar', '~> 1.0.0', group: :test
 gem 'rails_12factor', group: :production
+gem 'figaro'
