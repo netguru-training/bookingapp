@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :check_ownership, only: [:new, :edit, :create, :destroy]
+  before_action :check_ownership, only: [:new, :edit, :update, :destroy]
 
   expose(:bookings)
   expose(:booking, attributes: :booking_params)
@@ -20,7 +20,9 @@ class BookingsController < ApplicationController
 
   def create
     booking.user = current_user
-    if booking.save
+    if current_user.is_owner?(booking)
+      redirect_to root_path, flash: {error: "You can't book your own place"}
+    elsif booking.save
       current_user.bookings << booking
       redirect_to dashboard_index_path
     else
@@ -50,6 +52,6 @@ class BookingsController < ApplicationController
   end
 
   def check_ownership
-    redirect_to root, flash: "You can't book your own place" if current_user.is_owner?(booking)
+    redirect_to root_path, flash: {error: "You can't book your own place"} if current_user.is_owner?(booking)
   end
 end
