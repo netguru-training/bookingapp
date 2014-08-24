@@ -16,13 +16,13 @@ class Booking < ActiveRecord::Base
   end
 
   def accept!
-    return true if confirmation?
-    update(confirmation: true)
+    return true if confirmed?
+    update(confirmed: true)
   end
 
   def decline!
-    return false if confirmation?
-    update(confirmation: false)
+    return false if confirmed?
+    update(confirmed: false)
   end
 
 end
