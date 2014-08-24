@@ -1,3 +1,6 @@
+language: ruby
+rvm:
+  - 2.1.2
 deploy:
   provider: heroku
   api_key:
@@ -5,6 +8,6 @@ deploy:
   app: blooming-brushlands-8371
   on:
     repo: netguru-training/bookingapp
-  before_script:
-    - cp config/database.yml.travis config/database.yml
-    - psql -c 'create database travis_ci_test;' -U postgres
+before_script:
+  - cp config/database.yml.travis config/database.yml
+  - psql -c 'create database travis_ci_test;' -U postgres
