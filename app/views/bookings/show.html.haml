@@ -14,16 +14,16 @@
   ago.
 
 %p
-  Dates:
-  = booking.date_from
-  = booking.date_to
+  Reservation from:
+  = booking.date_from.to_date
+  to
+  = booking.date_to.to_date
+  that is
   = booking_period
 %p
   Total price:
   = booking.place.price*booking_period.to_i
 
-= link_to 'Back to bookings', bookings_path
-
-= button_to 'Accept', accept_booking_path(booking)
-
-= button_to 'Reject', decline_booking_path(booking)
+= link_to 'Back to bookings', bookings_path, class: 'btn btn-default'
+= link_to 'Accept', accept_booking_path(booking), class: 'btn btn-success', method: :post
+= link_to 'Reject', decline_booking_path(booking), class: 'btn btn-danger', method: :post
