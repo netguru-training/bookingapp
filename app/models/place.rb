@@ -6,12 +6,15 @@ class Place < ActiveRecord::Base
   validates :price, :name, :description, :user_id, :city, :street, presence: true
   validates_format_of :price, :with => /\A^\d+\.?\d{0,2}\z/
   validates :name, uniqueness: true
+  validates :beds, presence: true, numericality: { greater_than: 0 }
+  validates_datetime :available_to, after: :available_from
+  validates_date :available_from, after: lambda { Date.current }
 
   scope :most_recent, -> { order("created_at DESC").limit(5) }
   scope :for_user, -> (id) { where(user_id: id) }
 
-  geocoded_by :full_street_address   # can also be an IP address
-  after_validation :geocode          # auto-fetch coordinates
+  geocoded_by :full_street_address
+  after_validation :geocode
 
   attr_accessor :bookings_count
 

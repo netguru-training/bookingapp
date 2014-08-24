@@ -1,15 +1,15 @@
 .row
   .col-xs-8
-    
+
     %h2
       = place.name
     %p.text-right
-      Price: 
-      %span.label.label-info 
+      Price:
+      %span.label.label-info
         = place.price
     %p
       = place.city
-      | 
+      |
       = place.street
     %p
       = place.description
@@ -18,17 +18,25 @@
       - if place.owned_by?(current_user)
         |
         = link_to 'Edit', edit_place_path(place)
-
     %p
-      Average rating:
-      = place.average_rating
+      This place is available from:
+      %b= place.available_from.strftime('%m/%d/%Y')
+      to:
+      %b= place.available_to.strftime('%m/%d/%Y')
+    %p
+      - unless place.average_rating.nil?
+        Average rating:
+        = place.average_rating
+    %p
+      %b= pluralize(place.beds, 'bed')
+      available!
     = simple_form_for booking do |f|
       = f.input :place_id, as: :hidden, input_html: {value: place.id}
       %p Booking:
       .row
         .col-xs-6
           = f.input :date_from, as: :string, required: true, placeholder: 'date from', label: false
-        .col-xs-6  
+        .col-xs-6
           = f.input :date_to, as: :string, required: true, placeholder: 'date to', label: false
       = f.button :submit
 

@@ -1,9 +1,12 @@
 .row
-  .col-xs-4
+  .col-xs-6
     = simple_form_for place do |f|
-      = f.input :name
-      = f.input :description
-      = f.input :city
-      = f.input :street
-      = f.input :price
+      = f.input :name, required: false
+      = f.input :description, required: false
+      = f.input :city, required: false
+      = f.input :street, required: false
+      = f.input :price, required: false
+      = f.input :available_from, as: :string, required: false
+      = f.input :available_to, as: :string, required: false
+      = f.input :beds, required: false
       = f.button :submit
