@@ -15,6 +15,8 @@
       %ul.nav.navbar-nav
         %li{class: [params[:controller], params[:action]] == ['places', 'index'] ? 'active' : ''}
           =link_to 'Places', places_path
+        %li
+          =link_to 'Bookings', bookings_path
 
       %ul.nav.navbar-nav.navbar-right
         - if @notifications
