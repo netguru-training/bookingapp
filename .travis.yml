@@ -5,6 +5,8 @@ deploy:
   provider: heroku
   api_key:
     secure: BGha85rxZIhoPD1luX1RXHJi9GzC78mlh6bwAabiNWXGoJzNmlY3cnHE1WsxIhzoJ3vwoLg1l6iQ3LTj/tHfShUxQ9OaIM9Q1aO/h8GznSKM+Q5Bas3eu8zS6guoMOR2f2/s+1KuIN3eIoE/9ASail7TUkeNr//13sTjTf4lC+k=
+  run:
+    - "rake db:migrate"
   app: blooming-brushlands-8371
   on:
     repo: netguru-training/bookingapp
