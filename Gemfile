@@ -24,3 +24,5 @@ gem 'better_errors', group: :development
 gem 'pikaday-gem', '~> 1.2.0'
 gem 'geocoder'
 gem 'omniauth-facebook'
+gem 'rollbar', '~> 1.0.0', group: :test
+gem 'rails_12factor', group: :production
