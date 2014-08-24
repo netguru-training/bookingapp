@@ -9,7 +9,7 @@ class Review < ActiveRecord::Base
 
   def review_author_is_not_place_author
     if Place.find(place_id).user_id == user_id
-      errors.add(:base, "can't review your own place")
+      errors.add(:base, 'can not review your own place')
     end
   end
 
