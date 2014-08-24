@@ -1,15 +1,23 @@
 require 'rails_helper'
 
-# Specs in this file have access to a helper object that includes
-# the ApplicationHelper. For example:
-#
-# describe ApplicationHelper do
-#   describe "string concat" do
-#     it "concats two strings with spaces" do
-#       expect(helper.concat_strings("this","that")).to eq("this that")
-#     end
-#   end
-# end
-RSpec.describe ApplicationHelper, :type => :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+RSpec.describe ApplicationHelper, type: :helper do
+  describe '#pretty_date' do
+    subject { Time.now }
+
+    context 'valid attributes' do
+      it "returns formatted data" do
+        expect(pretty_date(subject)).to eq(subject.strftime('%d/%m/%Y'))
+      end
+    end
+
+    context 'invalid attributes' do
+      it "returns formatted data of Time.now" do
+        expect(pretty_date(nil)).to eq(subject.strftime('%d/%m/%Y'))
+      end
+
+      it "returns formatted data of Time.now" do
+        expect(pretty_date()).to eq(subject.strftime('%d/%m/%Y'))
+      end
+    end
+  end
 end
