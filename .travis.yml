@@ -5,3 +5,5 @@ deploy:
   app: blooming-brushlands-8371
   on:
     repo: netguru-training/bookingapp
+  before_script:
+  - psql -c 'create database travis_ci_test;' -U postgres
