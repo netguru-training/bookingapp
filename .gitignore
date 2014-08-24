@@ -12,6 +12,7 @@ public/uploads
 public/javascripts/translations.js
 
 config/mongoid.yml
+config/secrets.yml
 config/database.yml
 
 .rbenv-gemsets
