@@ -19,7 +19,6 @@ config/database.yml
 .rbenv-version
 .powenv
 .env
-.travis.yml
 
 logfile
 
