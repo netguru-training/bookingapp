@@ -19,6 +19,14 @@ class BookingsController < ApplicationController
   end
 
   def create
+    booking.user = current_user
+    if booking.save
+      place.bookings << booking
+      current_user.bookings << booking
+      redirect_to dashboard_index_path
+    else
+      redirect_to place_path(place)
+    end
   end
 
   def destroy

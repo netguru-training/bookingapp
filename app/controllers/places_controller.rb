@@ -3,6 +3,8 @@ class PlacesController < ApplicationController
   expose(:place, attributes: :place_params)
   expose(:places)
   expose(:review) { Review.new }
+  expose(:bookings)
+  expose(:booking, attributes: :booking_params) { Booking.new }
 
 
   def check_if_user_is_author
