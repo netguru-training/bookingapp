@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 20140824093450) do
     t.string   "city"
     t.float    "latitude"
     t.float    "longitude"
-    t.datetime "available_from", default: '2014-08-24 09:46:59'
+    t.datetime "available_from", default: '2014-08-24 10:55:28'
     t.datetime "available_to"
     t.integer  "beds",           default: 1
   end
