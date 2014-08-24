@@ -8,8 +8,8 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
-gem 'sdoc', '~> 0.4.0',          group: :doc
-gem 'spring',        group: :development
+gem 'sdoc', '~> 0.4.0',      group: :doc
+gem 'spring',                group: :development
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
 gem 'devise'
@@ -20,15 +20,17 @@ gem 'decent_decoration'
 gem 'validates_timeliness', '~> 3.0'
 gem 'pry-rails'
 gem 'binding_of_caller'
-gem 'better_errors', group: :development
+gem 'better_errors',         group: :development
 gem 'pikaday-gem', '~> 1.2.0'
 gem 'geocoder'
 gem 'omniauth-facebook'
-gem 'rollbar', '~> 1.0.0', group: :test
-gem 'rails_12factor', group: :production
+gem 'rollbar', '~> 1.0.0',   group: :test
+gem 'rails_12factor',        group: :production
 gem 'figaro'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0'
   gem 'shoulda-matchers'
 end
+
+gem 'travis'
