@@ -1,34 +1,55 @@
-%h2
-  %b= place.name
-
-%p= place.description
-%p= place.price
-%p
-  Average rating:
-  = place.average_rating
-= simple_form_for booking do |f|
-  = f.input :place_id, as: :hidden, input_html: {value: place.id}
-  = f.input :date_from, as: :string
-  = f.input :date_to, as: :string
-  = f.button :submit
-
-
-- place.reviews.each do |review|
-  .well
-    %b=review.content
-    %p=review.user.email
+.row
+  .col-xs-8
+    
+    %h2
+      = place.name
+    %p.text-right
+      Price: 
+      %span.label.label-info 
+        = place.price
     %p
-      Rating:
-      =review.rating
-    -if review.user == current_user
-      %p=link_to 'Edit review', edit_place_review_path(place, review)
--if place.user != current_user and current_user.reviews.find_by_place_id(place.id) == nil
-  = render 'reviews/form'
-%p= place.city
-%p= place.street
+      = place.city
+      | 
+      = place.street
+    %p
+      = place.description
+    %p.text-right
+      = link_to 'Back to places', places_path
+      - if place.owned_by?(current_user)
+        |
+        = link_to 'Edit', edit_place_path(place)
 
+    %p
+      Average rating:
+      = place.average_rating
+    = simple_form_for booking do |f|
+      = f.input :place_id, as: :hidden, input_html: {value: place.id}
+      = f.input :date_from, as: :string
+      = f.input :date_to, as: :string
+      = f.button :submit
 
-= link_to 'Back to places', places_path
-- if place.owned_by?(current_user)
-  |
-  = link_to 'Edit', edit_place_path(place)
+    %p
+      Average rating:
+      = place.average_rating
+
+    %input#datepicker{:type => "text"}/
+
+    - place.reviews.each do |review|
+      .well
+        %b=review.content
+        %p=review.user.email
+        %p
+          Rating:
+          =review.rating
+        -if review.user == current_user
+          %p=link_to 'Edit review', edit_place_review_path(place, review)
+    - if place.user != current_user && current_user.reviews.find_by_place_id(place.id) == nil
+      = render 'reviews/form'
+
+    = link_to 'Back to places', places_path
+    - if place.owned_by?(current_user)
+      |
+      = link_to 'Edit', edit_place_path(place)
+
+  .col-xs-4
+    %iframe{frameborder: 0, width: '100%', height: 550, marginheight: 0, marginwidth: 0, scrolling: "no", src: "https://maps.google.pl/maps?f=q&q=#{place.city},+#{place.street}&sll=#{place.latitude},#{place.longitude}&ie=UTF8&hnear=#{place.street},+#{place.city}&z=14&ll=#{place.latitude},#{place.longitude}&output=embed"}
