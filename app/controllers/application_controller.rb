@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!, except: [:index, :facebook]
   expose(:notifications) { check_for_new_rent_offers }
 
   protect_from_forgery with: :exception
